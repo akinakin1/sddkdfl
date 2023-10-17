@@ -494,11 +494,9 @@ const SiparisFormu = (props) => {
             </div>
           </div>
           <div className="order-button">
-            {/*<NavLink href="/siparisalindi">*/}
               <Button id="order-button" color="warning" disabled={isDisabled} type="submit">
                 SİPARİŞ VER
               </Button>
-            {/*</NavLink>*/}
           </div>
         </div>
       </div>
