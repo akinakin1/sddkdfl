@@ -19,11 +19,11 @@ const App = () => {
       <div className="heading">
         {/* <img src="./Assets/logo.svg" /> */}
         {/* <img src={logo} alt="Teknolojik Yemekler" /> */}
-        <h1>
-          <a href="/" className="homePagefromLogo">
-            Teknolojik Yemekler
-          </a>
-        </h1>
+        {/*<h1>*/}
+        {/*  <a href="/" className="homePagefromLogo">*/}
+        {/*    Teknolojik Yemekler*/}
+        {/*  </a>*/}
+        {/*</h1>*/}
       </div>
 
       <Main /* addSth={addSth} */ />

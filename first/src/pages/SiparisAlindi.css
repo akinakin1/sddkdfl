@@ -1,11 +1,44 @@
-.siparis {
-    width: 1920px;
-    height: 1080px;
-    background-color: #ce2829;
-  }
-  .siparis p {
-    text-align: center;
-    color: white;
-    font-size: xx-large;
-  }
-  
+.siparis-container {
+  background-color: #FF2D2D;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  padding: 50px;
+  font-family: 'Arial', sans-serif;
+}
+
+.title {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+.siparis-title {
+  font-size: 32px;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.order-details, .order-summary {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.order-details h3, .order-summary h4 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.order-details p {
+  margin: 5px 0;
+}

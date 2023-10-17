@@ -3,13 +3,15 @@ import { useState, useEffect } from "react";
 //import axios from "axios";
 import * as yup from "yup";
 import "./SiparisFormu.css";
-import { Button } from "reactstrap";
+import { Button, NavLink } from "reactstrap";
 /* import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
 } from "reactstrap"; */
+
+import { useHistory } from 'react-router-dom';
 
 const SiparisFormu = (props) => {
   //const { pizzaDetails, name, price } = props;
@@ -77,6 +79,9 @@ const SiparisFormu = (props) => {
   const [formData, setFormData] = useState(initialForm);
   //const [errors, setErrors] = useState(initialError);
   const [isDisabled, setIsDisabled] = useState(true);
+
+  const history = useHistory();
+
 
   //console.log("q", formData.quantity);
 
@@ -158,7 +163,7 @@ const SiparisFormu = (props) => {
         (value) => Object.values(value).filter(Boolean).length <= 10
       ),
 
-    /*  
+    /*
     thickness: yup.string().oneOf((value) => Object.key(value)), */
     /* extraIngredients: yup
       .array()
@@ -189,12 +194,12 @@ const SiparisFormu = (props) => {
     };
 
     if (event.target.type === "checkbox") {
-      if (event.target.checked) {
+      // if (event.target.checked) {
         newFormData = {
           ...formData,
-          extraIngredients: { ...formData.extraIngredients, [name]: value },
+          extraIngredients: { ...formData.extraIngredients, [name]: event.target.checked },
         };
-      }
+      // }
     } else {
       newFormData = {
         ...formData,
@@ -301,19 +306,22 @@ const SiparisFormu = (props) => {
   };
 
   const submitHandler = (event) => {
-    //console.log(event);
     event.preventDefault();
-    /*  axios
-      .post("https://reqres.in/api/users", formData)
-      .then((res) => {
-        props.addNewUser(res.data);
-      })
-      // props.users
-      .catch((error) => {
-        console.log(error.response.message);
-      }); */
+
+    // Sipariş bilgilerini topla
+    const orderData = {
+      pizzaName: "Position Absolute Acı Pizza",
+      size: formData.size,
+      thickness: formData.thickness,
+      extraIngredients: formData.extraIngredients,
+      totalPrice: count * (numberOfIngredients * 5 + newPrice(price))
+    };
+
+    // Sipariş Alındı sayfasına yönlendir ve bilgileri geçir
+    history.push('/siparisalindi', orderData);
     setFormData(initialForm);
   };
+
 
   return (
     <form id="pizza-form" onSubmit={submitHandler}>
@@ -474,7 +482,7 @@ const SiparisFormu = (props) => {
           </div>
         </div>
         <div className="total-button">
-          <div className="order-total">
+          <div className="order-total" style={{ paddingLeft: '10px' }}>
             <div className="siparis-toplami">Sipariş Toplamı</div>
             <div className="secimler">
               Seçimler:
@@ -486,14 +494,11 @@ const SiparisFormu = (props) => {
             </div>
           </div>
           <div className="order-button">
-            <Button
-              id="order-button"
-              href="/siparisalindi"
-              disabled={isDisabled}
-              type="submit"
-            >
-              SİPARİŞ VER
-            </Button>
+            {/*<NavLink href="/siparisalindi">*/}
+              <Button id="order-button" color="warning" disabled={isDisabled} type="submit">
+                SİPARİŞ VER
+              </Button>
+            {/*</NavLink>*/}
           </div>
         </div>
       </div>
